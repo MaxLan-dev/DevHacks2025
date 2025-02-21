@@ -1,1 +1,54 @@
 food4u/food4u/.env
+# Django
+*.log
+*.pot
+*.pyc
+__pycache__/
+db.sqlite3
+db.sqlite3-journal
+media
+
+# Database
+*.sqlite3
+*.db
+*.sql
+
+
+# Environments
+*.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+secure.env
+# IDE specific files
+.idea/
+.vscode/
+
+# Compiled files
+*.pyc
+*.so
+*.pyo
+*.mo
+*.min.js
+*.min.css
+
+# Temporary and cache files
+*.tmp
+*.temp
+*.cache
+.cache/
+*.tmp/
+*.pyc
+*.pyc
+*.sqlite3
+*.pyc
+*.pyc
+*.sqlite3
+*.pyc
+/food4u/registration/__pycache__
+/food4u/registration/__pycache__
+/food4u/registration/migrations
+/food4u/food4u/__pycache__
