@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food4U</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"> <!-- Pico.css -->
+    <link rel="stylesheet" href="styles.css"> <!-- You can link a CSS file here -->
+</head>
+
+<body>
+
+    <main class="container" style="
+        background-color: var(--color-accent1); 
+        padding: 2rem; 
+        border-radius: 0.5rem;
+        margin-top: 2rem;
+    ">
+        
+        <form action="/login" method="post">
+            <div class="authForm">
+                <input type="email" name="email" placeholder="Email address" aria-label="Email address" autocomplete="email" required>
+                <input type="password" name="password" placeholder="Password" aria-label="Password" required>
+                <button type="submit">Log in</button>
+            </div>
+        </form>
+
+    </main>

@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}Search{% endblock %}
+
+{% block content %}
+<main class="container" style="
+  background-color: var(--color-accent1);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+">
+
+  <h2>Find Local Businesses</h2>
+  <p>Use the filters below to refine your search.</p>
+
+  <form action="/search/" method="get">
+    <!-- Search bar -->
+    <label for="q">Search</label>
+    <input 
+      type="search" 
+      id="q" 
+      name="q" 
+      placeholder="Enter your search term..." 
+      required
+    >
+
+    <!-- Industry filter -->
+    <label for="industry">Industry</label>
+    <select id="industry" name="industry">
+      <option value="">Any</option>
+      <option value="restaurant">Restaurant</option>
+      <option value="bakery">Bakery</option>
+      <option value="cafe">Cafe</option>
+      <option value="grocery">Grocery</option>
+      <!-- Add more industries as needed -->
+    </select>
+
+    <!-- Location filter (km) -->
+    <label for="location">Location (km)</label>
+    <input 
+      type="number" 
+      id="location" 
+      name="location" 
+      min="1" 
+      max="1000" 
+      value="100"
+    >
+
+    <!-- Rating range filters -->
+    <div style="display: flex; gap: 1rem;">
+      <div>
+        <label for="rating_min">Rating Min</label>
+        <input 
+          type="number" 
+          id="rating_min" 
+          name="rating_min" 
+          min="1" 
+          max="5" 
+          value="1"
+        >
+      </div>
+      <div>
+        <label for="rating_max">Rating Max</label>
+        <input 
+          type="number" 
+          id="rating_max" 
+          name="rating_max" 
+          min="1" 
+          max="5" 
+          value="5"
+        >
+      </div>
+    </div>
+
+    <!-- Hide No Rating -->
+    <label for="no_rating">
+      <input 
+        type="checkbox" 
+        id="no_rating" 
+        name="no_rating" 
+        value="true"
+      >
+      Hide listings with no rating
+    </label>
+
+    <!-- Submit button -->
+    <button type="submit">Search</button>
+  </form>
+</main>
+{% endblock %}
