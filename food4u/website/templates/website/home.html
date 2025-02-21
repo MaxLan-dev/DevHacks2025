@@ -1,31 +1,57 @@
-{% load static %}
-{% block content %}
-<p>Home page</p>
-{% endblock %}
-{% comment %}
-<style>
-    .main-card {
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        transition: 0.3s;
-        border-radius: 15px;
-        overflow: hidden;
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food4U</title>
+    <link rel="stylesheet" href="styles.css"> <!-- You can link a CSS file here -->
+</head>
 
-    .main-card:hover {
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
+<body>
 
-    .card-body p {
-        color: #34495e;
-        font-size: 1.1rem;
-        line-height: 1.6;
-    }
+    
+    <header>
 
-    @media (max-width: 767px) {
-        .card-body p {
-            font-size: 1rem;
-        }
-    }
-</style>
-here is the template
-{% endcomment %}
+        <div id="navigationPanel" class="navigationPanel">
+            <div class="navbarButton">
+                <a href="aboutUs.html" title="aboutUS" class="navbarButtonLink">About us</a>
+            </div>
+
+            <div class="navbarButton">
+                <a href="search.html" title="Search" class="navbarButtonLink">Search</a>
+            </div>
+
+            <div class="navbarButton">
+                <a href="wishlist.html" title="Wishlist" class="navbarButtonLink">Wishlist</a>
+            </div>
+
+            <div class="navbarButton">
+                <a href="account.html" title="Account" class="navbarButtonLink">Account</a>
+            </div>
+
+            <div class="navbarButton">
+                <a href="loginPage.html" title="LoginSignup" class="navbarButtonLink">Login/Signup</a>
+            </div>
+
+        </div>
+        
+    </header>
+
+    
+    <main>
+
+        <div id="mainText", class="mainText">
+            <h1>Buy local, Support local</h1>
+        </div>
+        
+    </main>
+
+    
+    <footer>
+        
+    </footer>
+
+</body>
+
+
+</html>
