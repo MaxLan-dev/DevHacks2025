@@ -43,3 +43,5 @@ secure.env
 *.tmp/
 *.pyc
 *.pyc
+*.sqlite3
+*.pyc
