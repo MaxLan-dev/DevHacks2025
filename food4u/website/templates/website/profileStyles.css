@@ -1,0 +1,47 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html, body{
+	height: 100%;
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+.header{
+	display: flex;
+}
+
+.navigationPanel{
+	display: flex;
+	flex-direction: row;
+	background-color: #6A8D73;
+	height: 50px;
+}
+
+.navbarButton{
+	display: flex;
+    justify-content: center;
+    align-items: center;  
+	width: 20%;
+}
+
+.navbarButton:hover {
+	background-color: #92CB87;
+}
+
+main{
+	background-color: #E4FFE1;
+}
+
+
+
+footer{
+	background-color: #F0A868;
+	padding: 30px;
+}
