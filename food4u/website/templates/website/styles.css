@@ -23,7 +23,7 @@ a {
 .navigationPanel{
 	display: flex;
 	flex-direction: row;
-	background-color: #ED2156;
+	background-color: #6A8D63;
 	height: 30px;
 }
 
@@ -32,7 +32,7 @@ a {
     justify-content: center;  /* Center horizontally */
     align-items: center;  
 	width: 20%;
-
+	font-color: ;
 }
 
 
@@ -41,7 +41,7 @@ a {
 	display: flex; 
 	top: 50%;
 	bottom: 50%;
-	background-color: #0CEDA2;
+	background-color: #8FD980;
 	width: 50%;
 	height: 15%;
 	left: 50%;
@@ -49,6 +49,7 @@ a {
 	justify-content: center;
 	align-items: center;
 	font-size: 100%;
+	border-radius: 10px;
 }
 
 .errorText{
