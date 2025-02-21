@@ -23,13 +23,27 @@ a {
 	display: flex;
 	flex-direction: row;
 	background-color: #ED2156;
-	height: 30px;
+	height: 50px;
 }
 
 .navbarButton{
 	display: flex;
-    justify-content: center;  /* Center horizontally */
+    justify-content: center;
     align-items: center;  
 	width: 20%;
 
+}
+
+main{
+	padding-top: 0.1%;
+	background-color: #E4FFE1;
+}
+
+section{
+	margin-top: 2%;
+	padding: 3%;
+	background-color: #81D071;
+	margin-left: 10%;
+	margin-right: 10%;
+	border-radius: 10px;
 }
