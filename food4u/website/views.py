@@ -4,7 +4,7 @@ from django.views.decorators.http import require_POST
 from django.contrib.auth import logout
 from django.views.decorators.cache import never_cache
 from django.shortcuts import render
-from db import SessionLocal, User, Supplier, Products, Review
+from .db import SessionLocal, User, Supplier, Products, Review
 from sqlalchemy import select
 
 def home_view(request):
