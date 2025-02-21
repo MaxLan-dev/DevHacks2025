@@ -40,4 +40,6 @@ secure.env
 *.temp
 *.cache
 .cache/
-.tmp/
+*.tmp/
+*.pyc
+*.pyc
