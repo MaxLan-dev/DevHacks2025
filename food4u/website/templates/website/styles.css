@@ -6,6 +6,7 @@
 
 html, body{
 	height: 100%;
+	margin: 0;
 }
 
 a {
@@ -13,14 +14,16 @@ a {
 }
 
 .header{
+	display: flex;
+	
 	
 }
 
 .navigationPanel{
 	display: flex;
 	flex-direction: row;
-	background-color: #ED5151;
-	height: 35%;
+	background-color: #ED2156;
+	height: 30px;
 }
 
 .navbarButton{
@@ -29,4 +32,9 @@ a {
     align-items: center;  
 	width: 20%;
 
+}
+
+
+.mainText{
+	
 }
