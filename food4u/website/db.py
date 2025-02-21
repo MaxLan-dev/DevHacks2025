@@ -1,9 +1,12 @@
-from sqlalchemy import Column, Integer, Text, DateTime, Boolean, ForeignKey, create_engine
+from sqlalchemy import Column, Integer, Text, DateTime, Boolean, ForeignKey, create_engine, select
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, scoped_session, sessionmaker
+import datetime
 
 
-engine = create_engine("sqlite:///food4u.db", echo=True)
+engine = create_engine("sqlite:///food4u.db", echo=False)
+
+SessionLocal = scoped_session(sessionmaker(autocommit=False, autoflush=False, bind=engine))
 
 Base = declarative_base()
 
@@ -21,7 +24,6 @@ class User(Base):
     description = Column(Text, nullable=True)
     
     # Relationships to other tables
-    auth = relationship("Auth", back_populates="user", uselist=False)
     reviews = relationship("Review", back_populates="writer")
 
 
@@ -34,6 +36,7 @@ class Supplier(Base):
     email = Column(Text, nullable=False, unique=True)
     phone = Column(Text, nullable=True)
     date_registered = Column(DateTime, nullable=True)
+    industry = Column(Text, nullable=False)
     description = Column(Text, nullable=True)
     
     products = relationship("Products", back_populates="supplier")
@@ -71,3 +74,22 @@ class Review(Base):
     supplier = relationship("Supplier", back_populates="reviews")
 
 Base.metadata.create_all(engine)
+
+print("hello")
+
+# session = SessionLocal()
+# try:
+# #    test_user = User(name="tes1t", address="test", email="test1", phone="test", date_registered=datetime.datetime.now(), industry="test", is_staff=True, description="test")
+# #    session.add(test_user)
+# #    session.commit()
+#     query = select(User).where(User.id == 1)
+#     results = session.scalar(query)
+#     print("adsadasdassa")
+#     print(results)
+#     #data = [obj.to_dict() for obj in results]  # Assume your models have a to_dict method
+# except Exception as e:
+#     print(e)
+#     print("errorerrorerrorerror")
+#     session.rollback()
+# finally:
+#     session.close()
