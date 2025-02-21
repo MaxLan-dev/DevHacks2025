@@ -45,3 +45,10 @@ secure.env
 *.pyc
 *.sqlite3
 *.pyc
+*.pyc
+*.sqlite3
+*.pyc
+/food4u/registration/__pycache__
+/food4u/registration/__pycache__
+/food4u/registration/migrations
+/food4u/food4u/__pycache__
