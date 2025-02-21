@@ -15,14 +15,12 @@ a {
 
 .header{
 	display: flex;
-	
-	
 }
 
 .navigationPanel{
 	display: flex;
 	flex-direction: row;
-	background-color: #ED2156;
+	background-color: #6A8D73;
 	height: 50px;
 }
 
@@ -42,7 +40,7 @@ main{
 section{
 	margin-top: 2%;
 	padding: 3%;
-	background-color: #81D071;
+	background-color: #8FD980;
 	margin-left: 10%;
 	margin-right: 10%;
 	border-radius: 10px;
