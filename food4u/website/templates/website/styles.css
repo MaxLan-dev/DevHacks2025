@@ -1,0 +1,32 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html, body{
+	height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+.header{
+	
+}
+
+.navigationPanel{
+	display: flex;
+	flex-direction: row;
+	background-color: #ED5151;
+	height: 35%;
+}
+
+.navbarButton{
+	display: flex;
+    justify-content: center;  /* Center horizontally */
+    align-items: center;  
+	width: 20%;
+
+}
