@@ -33,19 +33,3 @@ a {
 	width: 20%;
 
 }
-
-
-.mainText{
-	position: absolute;
-	display: flex; 
-	top: 50%;
-	bottom: 50%;
-	background-color: #0CEDA2;
-	width: 50%;
-	height: 15%;
-	left: 50%;
-	transform: translate(-50%, -50%); 
-	justify-content: center;
-	align-items: center;
-	font-size: 100%;
-}
