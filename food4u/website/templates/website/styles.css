@@ -67,3 +67,16 @@ a {
 	border-radius: 20px;
 	color: #FFFFFF;
 }
+
+.authForm{
+	position: absolute; 
+	top: 50%;
+	bottom: 50%;
+	width: 20%;
+	height: 15%;
+	left: 50%;
+	transform: translate(-50%, -50%); 
+	justify-content: center;
+	align-items: center;
+	font-size: 100%;
+}

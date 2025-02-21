@@ -1,1 +1,6 @@
 food4u/food4u/.env
+food4u/food4u/__pycache__/
+food4u/registration/__pycache__/
+food4u/registration/migrations/__pycache__/
+food4u/website/__pycache__/
+food4u/website/migrations/__pycache__/
