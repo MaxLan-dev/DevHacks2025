@@ -32,7 +32,11 @@ a {
     justify-content: center;  /* Center horizontally */
     align-items: center;  
 	width: 20%;
-	font-color: ;
+}
+
+
+.navbarButton:hover {
+	background-color: #92CB87;
 }
 
 
