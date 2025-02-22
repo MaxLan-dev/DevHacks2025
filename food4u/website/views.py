@@ -12,7 +12,7 @@ def home_view(request):
 def wishlist_view(request):
     return render(request, 'website/wishlist.html')
 def about_view(request):
-    return render(request, 'website/aboutUS.html')
+    return render(request, 'website/aboutUs.html')
 def profile_view(request, supplier_id):
     session = SessionLocal()
     try:
