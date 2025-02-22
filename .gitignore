@@ -52,3 +52,4 @@ secure.env
 /food4u/registration/__pycache__
 /food4u/registration/migrations
 /food4u/food4u/__pycache__
+*.sqlite3
