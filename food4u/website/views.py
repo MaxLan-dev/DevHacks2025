@@ -10,7 +10,7 @@ from sqlalchemy import select
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from registration.forms import UserUpdateForm  # You'll need to create this form
+from registration.forms import UserUpdateForm, ReviewAddForm  # You'll need to create this form
 from .db import SessionLocal, User
 from sqlalchemy import select, update
 
@@ -25,7 +25,19 @@ def profile_view(request, supplier_id):
     try:
         query = select(Supplier).where(Supplier.id == supplier_id)
         results = session.scalar(query)
-        print(results.address)
+        if request.method == 'POST':
+            form = ReviewAddForm(request.POST)
+            if form.is_valid():
+                # Update the user data in the database
+                review = Review(
+                    content = form.cleaned_data['content'],
+                    rating = form.cleaned_data['rating'],
+                    date = datetime.now(),
+                    writer = request.user
+                )
+                session.add(review)
+                session.commit()
+                return redirect('profile', supplier_id=supplier_id)
         reviews = []
         for review in results.reviews:
             review_dict = {'content' : review.content,
