@@ -4,11 +4,18 @@
 
 {% block content %}
 
-    <main>
+<main class="container" style="
+    background-color: var(--color-accent1); 
+    padding: 2rem; 
+    border-radius: 0.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 70%;
+">
 
-        <div id="ErrorText", class="errorText">
-            <h1>{{ error }}</h1>
-        </div>
-        
-    </main>
+    <div id="ErrorText" , class="errorText">
+        <h1>{{ error }}</h1>
+    </div>
+
+</main>
 {% endblock %}

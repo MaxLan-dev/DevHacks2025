@@ -12,29 +12,31 @@
         <div id="navigationPanel" class="navigationPanel">
 
             <div class="navbarButton">
-                <a href="home.html" title="aboutUS" class="navbarButtonLink">Home</a>
+                <a href="{% url 'home' %}" title="Home" class="navbarButtonLink">Home</a>
+            </div>
+            
+
+            <div class="navbarButton">
+                <a href="{% url 'about' %}" title="aboutUS" class="navbarButtonLink">About us</a>
             </div>
 
             <div class="navbarButton">
-                <a href="aboutUs.html" title="aboutUS" class="navbarButtonLink">About us</a>
+              <a href="{% url 'search' %}" title="Search" class="navbarButtonLink">Search</a>
             </div>
 
             <div class="navbarButton">
-                <a href="search.html" title="Search" class="navbarButtonLink">Search</a>
+                <a href="{% url 'wishlist' %}" title="Wishlist" class="navbarButtonLink">Wishlist</a>
             </div>
 
             <div class="navbarButton">
-                <a href="wishlist.html" title="Wishlist" class="navbarButtonLink">Wishlist</a>
+                <a href="{% url 'account' %}" title="Account" class="navbarButtonLink">Account</a>
+        
             </div>
-
+            
             <div class="navbarButton">
-                <a href="account.html" title="Account" class="navbarButtonLink">Account</a>
+                <a href="{% url 'member_login' %}" title="Login" class="navbarButtonLink">Login</a>
+        
             </div>
-
-            <div class="navbarButton">
-                <a href="loginPage.html" title="LoginSignup" class="navbarButtonLink">Login/Signup</a>
-            </div>
-
         </div>
     </header>
 
