@@ -70,6 +70,16 @@
       text-decoration: none;
     }
 
+    .homeButton{
+      font-size: 20px;
+      font-weight: bold;
+      background-color: #507e46;
+    }
+
+    .homeButton:hover{
+      background-color: #85d373;
+    }
+
     footer {
       background-color: var(--color-accent3);
       padding: 0.6rem;
@@ -82,42 +92,7 @@
       margin: 0;
     }
 
-    .review-item {
-    margin: 1rem 0;
-    padding: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background: #f9f9f9;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.review-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.5rem;
-}
-
-.review-author {
-    font-size: 1.1rem;
-}
-
-.review-date {
-    font-size: 0.9rem;
-    color: #555;
-}
-
-.review-content {
-    margin: 0.5rem 0;
-    font-size: 1rem;
-    line-height: 1.4;
-}
-
-.review-rating {
-    font-size: 1rem;
-    font-weight: bold;
-    color: #007BFF;
-}
+    
 
     .mainPart {
     background-color: #BBFFC5;
@@ -131,7 +106,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 34px;
+    font-size: 24px;
     font-weight: bold;
     color: #2F4F4F;
     margin-bottom: 20px;
@@ -165,19 +140,13 @@
 /* Caption Section */
 .caption {
     background-color: #8FD980;
-    padding-top: 10px;
-    padding-bottom: 5px;
+    padding: 20px;
     width: 60%;
     margin: 40px auto;
     text-align: center;
-    font-size: 35px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
-
-
-
 
   </style>
 </head>
@@ -185,11 +154,11 @@
 <body>
   <div class="wrapper">
 
-<!-- 3. Header with a semantic nav -->
+    <!-- 3. Header with a semantic nav -->
     <header>
       <nav class="container">
         <ul>
-          <li><a href="{% url 'home' %}">Food4U</a></li> <!-- Logo or brand name -->
+          <li><a href="{% url 'home' %}" class="homeButton">Food4U</a></li> <!-- Logo or brand name -->
         </ul>
         <ul>
           <li><a href="{% url 'about' %}">About Us</a></li>
