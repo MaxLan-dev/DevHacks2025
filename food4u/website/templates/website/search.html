@@ -2,23 +2,25 @@
 
 {% block content %}
 <main class="container" style="
-background-color: var(--color-accent1); 
-padding: 2rem; 
-border-radius: 0.5rem;
-margin-top: 2rem;
+  background-color: var(--color-accent1); 
+  padding: 2rem; 
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  width: 70%;
 ">
 <h2>Find Local Businesses</h2>
 <p>Use the filters below to refine your search.</p>
 
 <!-- Search Form -->
-<form id="searchForm" action="/search/" method="get">
+<form id="searchForm" action="/search/" method="get" style="padding: 1rem;">
   <!-- Search bar -->
   <label for="q">Search</label>
-  <input 
-    type="search" 
-    id="q" 
-    name="q" 
-    placeholder="Enter your search term..." 
+  <input
+    type="search"
+    id="q"
+    name="q"
+    placeholder="Enter your search term...""
     required
   >
 
