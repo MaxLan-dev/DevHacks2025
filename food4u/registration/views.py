@@ -1,4 +1,5 @@
 import os
+import datetime
 from django.contrib.auth import logout, login
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_protect
@@ -20,7 +21,7 @@ from django.core.mail.backends.smtp import EmailBackend
 from .forms import CustomLoginForm
 from django.urls import reverse_lazy
 from django.views.decorators.cache import never_cache
-
+from website.db import SessionLocal, User, Supplier, Products, Review
 from django.contrib.auth.models import Group
 from django.db import transaction
 
@@ -72,20 +73,24 @@ class RegisterView(FormView):
     form_class = UserRegistrationForm
     success_url = reverse_lazy('home') # Direct redirect
 
-    def get_form_kwargs(self):
-        kwargs = super().get_form_kwargs()
-        kwargs['is_retailer'] = self.kwargs.get('retailer', 'false').lower() == 'true'
-        return kwargs
 
     @transaction.atomic
     def form_valid(self, form):
         user = form.save()  # Save the user
         user.set_password(form.cleaned_data['password1'])
         user.save()
-
-        group_name = 'Retailers' if form.is_retailer else 'Subscribers'
-        group, created = Group.objects.get_or_create(name=group_name)
-        user.groups.add(group)
+        user_new = User(name = form.cleaned_data['name'], email = form.cleaned_data['email'], address = form.cleaned_data['address'], industry = form.cleaned_data['industry'], is_staff = False, date_registered = datetime.datetime.now())
+        session = SessionLocal()
+        try:
+            session.add(user_new)
+            session.commit()
+        except Exception as e:
+            print(e)
+            print("errorerrorerrorerror")
+            session.rollback()
+        finally:
+            session.close()
+            form.cleaned_data['password1']
 
         login(self.request, user)  # Log in immediately
         return super().form_valid(form)
