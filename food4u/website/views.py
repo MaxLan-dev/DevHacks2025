@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import never_cache
 from django.shortcuts import render
 from .db import SessionLocal, User, Supplier, Products, Review
@@ -11,8 +12,6 @@ from datetime import datetime
 
 def home_view(request):
     return render(request, 'website/home.html')
-def wishlist_view(request):
-    return render(request, 'website/wishlist.html')
 def about_view(request):
     return render(request, 'website/aboutUs.html')
 def profile_view(request, supplier_id):
@@ -20,17 +19,22 @@ def profile_view(request, supplier_id):
     try:
         query = select(Supplier).where(Supplier.id == supplier_id)
         results = session.scalar(query)
-        print(results.reviews)
-        supplier_dict = {
-                        'id' : results.id,
-                        'name' : results.name,
-                        'address' : results.address,
-                        'email' : results.email,
-                        'phone' : results.phone,
-                        'industry' : results.industry,
-                        'date_registered' : results.date_registered,
+        print(results.address)
+        reviews = []
+        for review in results.reviews:
+            review_dict = {'content' : review.content,
+                            'date' : review.date,
+                            'rating' : review.rating,
+                            'author' : review.writer.name}
+            reviews.append(review_dict)
+        supplier_dict = {'name' : results.name, 
+                        'address' : results.address, 
+                        'email' : results.email, 
+                        'phone' : results.phone, 
+                        'industry' : results.industry, 
+                        'date_registered' : results.date_registered, 
                         'description' : results.description,
-                        'reviews' : results.reviews}
+                        'reviews' : reviews}
         print(supplier_dict)
         return render(request, 'website/profile.html', supplier_dict)
     except Exception as e:
@@ -108,10 +112,11 @@ def search_results_request(request):
     finally:
         session.close()
 
-def account_view(request, user_id):
+@login_required
+def account_view(request):
     session = SessionLocal()
     try:
-        query = select(User).where(User.id == user_id)
+        query = select(User).where(User.email == request.user.email)
         results = session.scalar(query)
         user_dict = {'name' : results.name, 
                         'address' : results.address, 

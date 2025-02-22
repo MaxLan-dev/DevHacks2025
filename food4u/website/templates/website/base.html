@@ -81,6 +81,44 @@
       color: #fff;
       margin: 0;
     }
+
+    .greeting{
+      position: relative;
+      display: flex;
+      margin-top: 5%;
+      /*bottom: 80%;*/
+      width: 20%;
+      
+      left: 38%;
+      /*transform: translate(-20%, -80%); */
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      border-radius: 10px;
+    }
+
+    .discription{
+      position: relative;
+      display: flex;
+      margin-top: 2%;
+      width: 80%;
+      left: 10%;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      border-radius: 10px;
+    }
+
+    .callToAction{
+      position: relative;
+      display: flex;
+      margin-top: 2%;
+      
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      border-radius: 10px;
+    }
   </style>
 </head>
 
@@ -96,7 +134,6 @@
         <ul>
           <li><a href="{% url 'about' %}">About Us</a></li>
           <li><a href="{% url 'search' %}">Search</a></li>
-          <li><a href="wishlist">Wishlist</a></li>
           <li><a href="account">Account</a></li>
           <li><a href="{% url 'member_login' %}">Login/Signup</a></li>
         </ul>

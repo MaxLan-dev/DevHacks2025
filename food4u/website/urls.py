@@ -9,10 +9,14 @@ urlpatterns = [
     path('profile/<int:supplier_id>', views.profile_view, name='profile'),
     path('search', views.search_view, name='search'),
     path('about', views.about_view, name='about'),
-    path('wishlist', views.wishlist_view, name='wishlist'),
+    path('login/account', views.account_view, name='account'),
+    path('accounts/login/account', views.account_view, name='account'), 
     path('account', views.account_view, name='account'),
     path('search_results', views.search_results_request, name='search_results'),
     path('accounts/', include('registration.urls')),
     path('login/', CustomLoginView.as_view(), name='member_login'),
     path('logout/', views.user_logout_view, name='member_logout'),
+
+    path('search/api', views.search_view, name='search'),
+
 ]
