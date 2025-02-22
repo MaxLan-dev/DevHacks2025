@@ -31,14 +31,6 @@
     <!-- Search Form -->
     <form id="searchForm" action="/search/" method="get" style="display: flex; flex-direction: column; gap: 0.75rem;">
       <!-- Search bar -->
-      <label for="q">Search</label>
-      <input
-        type="search"
-        id="q"
-        name="q"
-        placeholder="Enter your search term..."
-        required
-      >
 
       <!-- Industry filter -->
       <label for="industry">Industry</label>
@@ -204,9 +196,7 @@ function displayProducts(products) {
     productItem.classList.add('product-item');
     
     // Example fallback image
-    const imageUrl = item.photo || 'https://via.placeholder.com/80';
     productItem.innerHTML = `
-      <img src="${imageUrl}" alt="${item.name || 'Product'}" />
       <div class="product-details">
         <h4>${item.name || 'Unnamed Product'}</h4>
         <p>${item.description || 'No description provided.'}</p>
