@@ -73,10 +73,20 @@
     .homeButton{
       font-size: 20px;
       font-weight: bold;
-      background-color: #507e46;
+      background-color: #1a4211;
     }
 
     .homeButton:hover{
+      background-color: #85d373;
+    }
+
+    .loginButton{
+      font-size: 20px;
+      font-weight: bold;
+      background-color: #1a4211;
+    }
+
+    .loginButton:hover{
       background-color: #85d373;
     }
 
@@ -144,6 +154,7 @@
     width: 60%;
     margin: 40px auto;
     text-align: center;
+    font-size: 35px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -164,7 +175,7 @@
           <li><a href="{% url 'about' %}">About Us</a></li>
           <li><a href="{% url 'search' %}">Search</a></li>
           <li><a href="{% url 'account' %}">Account</a></li>
-          <li><a href="{% url 'member_login' %}">Login/Signup</a></li>
+          <li><a href="{% url 'member_login' %}" class="loginButton">Login/Signup</a></li>
         </ul>
       </nav>
     </header>
