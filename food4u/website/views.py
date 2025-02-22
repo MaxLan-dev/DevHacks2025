@@ -113,7 +113,8 @@ def search_results_request(request):
             elif rating_sum / rating_count < rating_min or rating_sum / rating_count > rating_max:
                 print("skipped")
                 continue
-            supplier_dict = {'name' : supplier.name, 
+            supplier_dict = {'id' : supplier.id,
+                            'name' : supplier.name, 
                             'address' : supplier.address, 
                             'email' : supplier.email, 
                             'phone' : supplier.phone, 
