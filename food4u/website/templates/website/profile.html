@@ -1,48 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Food4U </title>
-    <link rel="stylesheet" href="profileStyles.css">
-</head>
-<body>
+{% extends 'website/base.html' %}
 
-    <header>
-        <div id="navigationPanel" class="navigationPanel">
+{% block title %}Main Page{% endblock %}
 
-            <div class="navbarButton">
-                <a href="home.html" title="aboutUS" class="navbarButtonLink">Home</a>
-            </div>
-
-            <div class="navbarButton">
-                <a href="aboutUs.html" title="aboutUS" class="navbarButtonLink">About us</a>
-            </div>
-
-            <div class="navbarButton">
-                <a href="search.html" title="Search" class="navbarButtonLink">Search</a>
-            </div>
-
-            <div class="navbarButton">
-                <a href="wishlist.html" title="Wishlist" class="navbarButtonLink">Wishlist</a>
-            </div>
-
-            <div class="navbarButton">
-                <a href="account.html" title="Account" class="navbarButtonLink">Account</a>
-            </div>
-
-            <div class="navbarButton">
-                <a href="loginPage.html" title="LoginSignup" class="navbarButtonLink">Login/Signup</a>
-            </div>
-
-        </div>
-    </header>
-
-    
-
+{% block content %}
     <main>
         
-       
         <div class="discription">
 
             <div class="name">
@@ -90,10 +52,4 @@
 
 
     </main>
-
-    <footer>
-        <p>© 2025 Food4U. All Rights Reserved.</p>
-    </footer>
-
-</body>
-</html>
+{% endblock %}
