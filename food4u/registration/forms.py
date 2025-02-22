@@ -99,3 +99,14 @@ class CustomLoginForm(AuthenticationForm):
 
     def __init__(self, *args, **kwargs):
         super(CustomLoginForm, self).__init__(*args, **kwargs)
+class UserUpdateForm(forms.Form):
+    name = forms.CharField(max_length=100)
+    address = forms.CharField(widget=forms.Textarea)
+    phone = forms.CharField(max_length=20, required=False)
+    industry = forms.ChoiceField(choices=(
+        ("restaurant", "Restaurant"),
+        ("bakery", "Bakery"),
+        ("cafe", "Cafe"),
+        ("grocery", "Grocery")
+    ))
+    description = forms.CharField(widget=forms.Textarea, required=False)

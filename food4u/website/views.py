@@ -7,7 +7,12 @@ from django.views.decorators.cache import never_cache
 from django.shortcuts import render
 from .db import SessionLocal, User, Supplier, Products, Review
 from sqlalchemy import select
-
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from registration.forms import UserUpdateForm  # You'll need to create this form
+from .db import SessionLocal, User
+from sqlalchemy import select, update
 def home_view(request):
     return render(request, 'website/home.html')
 def about_view(request):
@@ -107,14 +112,41 @@ def account_view(request):
     session = SessionLocal()
     try:
         query = select(User).where(User.email == request.user.email)
-        results = session.scalar(query)
-        user_dict = {'name' : results.name, 
-                        'address' : results.address, 
-                        'email' : results.email, 
-                        'phone' : results.phone, 
-                        'industry' : results.industry, 
-                        'date_registered' : results.date_registered, 
-                        'description' : results.description}
+        user = session.scalar(query)
+
+        if request.method == 'POST':
+            form = UserUpdateForm(request.POST)
+            if form.is_valid():
+                # Update the user data in the database
+                update_stmt = (
+                    update(User)
+                    .where(User.email == request.user.email)
+                    .values(
+                        name=form.cleaned_data['name'],
+                        address=form.cleaned_data['address'],
+                        phone=form.cleaned_data['phone'],
+                        industry=form.cleaned_data['industry'],
+                        description=form.cleaned_data.get('description', '')
+                    )
+                )
+                session.execute(update_stmt)
+                session.commit()
+                messages.success(request, 'Your account has been updated!')
+                return redirect('account')
+        else:
+            form = UserUpdateForm(initial={
+                'name': user.name,
+                'address': user.address,
+                'phone': user.phone,
+                'industry': user.industry,
+                'description': user.description
+            })
+
+        user_dict = {
+            'email': user.email,
+            'date_registered': user.date_registered,
+            'form': form
+        }
         return render(request, 'website/account.html', user_dict)
     except Exception as e:
         session.rollback()
