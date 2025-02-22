@@ -9,7 +9,7 @@ urlpatterns = [
     path('profile/<int:supplier_id>', views.profile_view, name='profile'),
     path('search', views.search_view, name='search'),
     path('about', views.about_view, name='about'),
-    path('accounts/login/account', views.account_view, name='account'),
+    path('login/account', views.account_view, name='account'),
     path('account', views.account_view, name='account'),
     path('search_results', views.search_results_request, name='search_results'),
     path('accounts/', include('registration.urls')),
