@@ -170,25 +170,3 @@ def user_logout_view(request):
     logout(request)
     response = redirect('home')
     return response
-
-
-
-
-session = SessionLocal()
-try:
-    rev1 = Review(writer_id=1, product_id=1, supplier_id=2, rating=5, label="test review1", content="test content1", date=datetime.now())
-    rev2 = Review(writer_id=1, product_id=1, supplier_id=2, rating=4, label="test review2", content="test content2", date=datetime.now())
-    #test_supplier = Supplier(name="test supplsier2", address="test address2", email="tests email2", phone="test phone2", industry="test industry2", description="test description2",
-                             #reviews=[rev1, rev2])
-    session.add(rev1)
-    session.add(rev2)
-    #session.add(test_supplier)
-    session.commit()
-    print("adsadasdassa")
-    #data = [obj.to_dict() for obj in results]  # Assume your models have a to_dict method
-except Exception as e:
-    print(e)
-    print("errorerrorerrorerror")
-    session.rollback()
-finally:
-    session.close()
