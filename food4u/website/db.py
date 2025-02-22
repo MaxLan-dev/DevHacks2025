@@ -77,19 +77,19 @@ Base.metadata.create_all(engine)
 
 #print("hello")
 
-session = SessionLocal()
-try:
-    test_supplier = Supplier(name="test supplsier", address="test address", email="tests email", phone="test phone", industry="test industry", description="test description")
-    session.add(test_supplier)
-    session.commit()
-    query = select(User).where(User.id == 1)
-    results = session.scalar(query)
-    print("adsadasdassa")
-    print(results)
-    #data = [obj.to_dict() for obj in results]  # Assume your models have a to_dict method
-except Exception as e:
-    print(e)
-    print("errorerrorerrorerror")
-    session.rollback()
-finally:
-    session.close()
+# session = SessionLocal()
+# try:
+#     test_supplier = Supplier(name="test supplsier", address="test address", email="tests email", phone="test phone", industry="test industry", description="test description")
+#     session.add(test_supplier)
+#     session.commit()
+#     query = select(User).where(User.id == 1)
+#     results = session.scalar(query)
+#     print("adsadasdassa")
+#     print(results)
+#     #data = [obj.to_dict() for obj in results]  # Assume your models have a to_dict method
+# except Exception as e:
+#     print(e)
+#     print("errorerrorerrorerror")
+#     session.rollback()
+# finally:
+#     session.close()
