@@ -252,7 +252,7 @@ searchForm.addEventListener('submit', (e) => {
   const formData = new FormData(searchForm);
   const params = new URLSearchParams(formData);
   // Example: if your backend endpoint is /search/api/
-  const fetchUrl = '/search/api/?' + params.toString();
+  const fetchUrl = '/search_results?' + params.toString();
 
   // Fetch JSON from backend
   fetch(fetchUrl)
