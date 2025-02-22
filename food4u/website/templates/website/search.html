@@ -203,9 +203,7 @@ function displayProducts(products) {
     productItem.classList.add('product-item');
     
     // Example fallback image
-    const imageUrl = item.photo || 'https://via.placeholder.com/80';
     productItem.innerHTML = `
-      <img src="${imageUrl}" alt="${item.name || 'Product'}" />
       <div class="product-details">
         <h4>${item.name || 'Unnamed Product'}</h4>
         <p>${item.description || 'No description provided.'}</p>
