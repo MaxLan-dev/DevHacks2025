@@ -197,12 +197,13 @@ function displayProducts(products) {
     
     // Example fallback image
     productItem.innerHTML = `
+    <a href="/product/${item.id}">
       <div class="product-details">
         <h4>${item.name || 'Unnamed Product'}</h4>
         <p>${item.description || 'No description provided.'}</p>
         <p><strong>Price:</strong> $${item.price || 'N/A'}</p>
         <p><strong>Rating:</strong> ${item.rating || 'N/A'}</p>
-      </div>
+      </div></a>
     `;
 
     productList.appendChild(productItem);
