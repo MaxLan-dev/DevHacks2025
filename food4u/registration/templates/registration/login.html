@@ -27,8 +27,9 @@
     {% endfor %}
     <button type="submit" class="btn btn-success btn-block">Login</button>
 
-    <div class="text-center mt-3">
+    <div>
       <a href="{% url 'password_reset_request' %}" class="text-success">Forgot Password?</a>
+      <a href="{% url 'register' %}" class="text-success">Don't have an account yet?</a>
     </div>
   </form>
 </main>
