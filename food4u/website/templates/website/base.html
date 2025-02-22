@@ -80,6 +80,16 @@
       background-color: #85d373;
     }
 
+    .loginButton{
+      font-size: 20px;
+      font-weight: bold;
+      background-color: #507e46;
+    }
+
+    .loginButton:hover{
+      background-color: #85d373;
+    }
+
     footer {
       background-color: var(--color-accent3);
       padding: 0.6rem;
@@ -164,7 +174,7 @@
           <li><a href="{% url 'about' %}">About Us</a></li>
           <li><a href="{% url 'search' %}">Search</a></li>
           <li><a href="{% url 'account' %}">Account</a></li>
-          <li><a href="{% url 'member_login' %}">Login/Signup</a></li>
+          <li><a href="{% url 'member_login' %}" class="loginButton">Login/Signup</a></li>
         </ul>
       </nav>
     </header>
