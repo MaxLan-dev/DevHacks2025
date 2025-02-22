@@ -9,13 +9,6 @@
   
   <!-- 2. Custom Styles to Use Your Color Palette -->
   <style>
-    /* Color Palette
-       6A8D73 (Reseda green)
-       F4FDD9 (Light yellow)
-       E4FFE1 (Nyanza)
-       FFE8C2 (Wheat)
-       F0A868 (Sandy brown)
-    */
     :root {
       --color-foreground: #6A8D73; /* Primary (header) */
       --color-background: #F4FDD9; /* Body background */
@@ -24,9 +17,23 @@
       --color-accent3:    #F0A868; /* Footer background */
     }
 
-    /* Apply background to the body */
-    body {
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
       background-color: var(--color-background);
+    }
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    main {
+      flex: 1;
+      margin-top: 1%;
     }
 
     /* Header styling */
@@ -45,7 +52,7 @@
     }
 
     header nav ul li a {
-      color: #fff;            /* White text on Reseda green */
+      color: #fff;
       text-decoration: none;
     }
 
@@ -62,7 +69,8 @@
     }
   </style>
 </head>
-<body>
+
+<body><div class="wrapper">
 
   <!-- 3. Header with a semantic nav -->
   <header>
@@ -90,5 +98,5 @@
     <p>© 2025 Food4U</p>
   </footer>
 
-</body>
+</div></body>
 </html>
