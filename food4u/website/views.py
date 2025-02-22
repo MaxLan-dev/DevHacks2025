@@ -74,16 +74,16 @@ def search_view(request):
 
 def search_results_request(request):
     # Industry, Location, Rating
-    industry = request.GET.get('industry', 'any')
+    industry = request.GET.get('industry', '')
     #location = request.GET.get('location', '1000')
     rating_min = int(request.GET.get('rating_min', '1'))
     rating_max = int(request.GET.get('rating_max', '5'))
-    hide_no_rating = request.GET.get('hide_no_rating', 'false')
+    hide_no_rating = request.GET.get('no_rating', 'false')
     session = SessionLocal()
     try:
         query = select(Supplier)
-        # if industry != 'any':
-        #     query = query.where(Supplier.industry == industry)
+        if industry != '':
+             query = query.where(Supplier.industry == industry)
         results_unrefined = session.scalars(query)
         results = []
         suppliers = []
