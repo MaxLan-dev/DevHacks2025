@@ -3,7 +3,14 @@
 {% block title %}Main Page{% endblock %}
 
 {% block content %}
-    <main>
+    <main style="
+        background-color: var(--color-accent1);
+        padding: 2rem;
+        border-radius: 0.5rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        width: 70%;
+    ">
         
         <div class="discription">
 
@@ -22,29 +29,17 @@
                 <h2>Contact Information</h2>
 
                 <div class="contactInfo">
-                    <p><strong>Address:</strong> 123 Green Valley Road, Springfield, USA</p>
-                    <p><strong>Phone:</strong> +1 (555) 123-4567</p>
-                    <p><strong>Email:</strong> <a href="arnoldBrosFarms@inbox.ca">arnoldBrosFarms@inbox.ca</a></p>
+                    <p><strong>Address:</strong> {{address}}</p>
+                    <p><strong>Phone:</strong> {{phone}}</p>
+                    <p><strong>Email:</strong> <a href="arnoldBrosFarms@inbox.ca"> {{email}}</a></p>
                     
                 </div>
 
             </div>
         
-            <div class="reviews">
+            <div class="reviews" id="reviews">
 
                 <h2>Customer Reviews</h2>
-                <div class="review">
-                    <p><strong>Emily's Café: ★★★★☆ (4/5) </strong></p> 
-                    <p>"GreenHarvest Farms has been an incredible partner for our business! Their fresh vegetables and dairy products keep our customers coming back for more."</p>
-                </div>
-                <div class="review">
-                    <p><strong>Chef Marco's Bistro: ★★★★★ (5/5)</strong> </p>
-                    <p>"The quality of the produce is outstanding! We love working directly with local farmers rather than large distributors."</p>
-                </div>
-                <div class="review">
-                    <p><strong>The Daily Fresh Deli: ★★★☆☆ (3/5)</strong> </p>
-                    <p>"Reliable deliveries, and fresh produce every time. The only thing is that it takes them long to respond!"</p>
-                </div>
 
             </div>
         </div>
@@ -52,4 +47,104 @@
 
 
     </main>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #FBF9F9;
+}
+
+.header{
+  display: flex;
+  
+}
+
+.navigationPanel{
+  display: flex;
+  flex-direction: row;
+  background-color: #6A8D73;
+  height: 50px;
+}
+
+.navbarButton{
+  display: flex;
+    justify-content: center;
+    align-items: center;  
+  width: 20%;
+
+}
+
+.navbarButton:hover {
+  background-color: #92CB87;
+}
+
+.discription{
+  margin-top: 2%;
+  padding: max(20px, 3%);
+  background-color: #8FD980;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.about{
+  margin-top: 4%;
+}
+
+.aboutInfo{
+  margin-left: 3%;
+  margin-top: 2%;
+}
+
+.contact{
+  margin-top: 4%;
+}
+
+.contactInfo{
+  margin-left: 3%;
+  margin-top: 2%;
+}
+
+.reviews{
+  margin-top: 4%;
+}
+
+.review{
+  margin-top: 2%;
+  margin-left: 3%;
+}
+
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const reviews = JSON.parse(document.getElementById('reviews-data').textContent);
+        const reviewsContainer = document.getElementById('reviews');
+
+        reviews.forEach(review => {
+            const reviewDiv = document.createElement('div');
+            reviewDiv.classList.add('review');
+            reviewDiv.innerHTML = `
+                <p><strong>${review.label}: ${review.rating}</strong></p>
+                <p>"${review.content}"</p>
+            `;
+            reviewsContainer.appendChild(reviewDiv);
+        });
+    });
+</script>
+
+<script id="reviews-data" type="application/json">
+    {{ reviews|json_script:"reviews-data" }}
+</script>
 {% endblock %}
