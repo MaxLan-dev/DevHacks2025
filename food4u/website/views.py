@@ -53,7 +53,7 @@ def search_view(request):
         return render(request, 'website/error.html', {'error': str(e)})
     finally:
         session.close()
-    return render(request, 'website/search.html')
+        return render(request, 'website/search.html')
 
 def search_results_request(request):
     # Industry, Location, Rating

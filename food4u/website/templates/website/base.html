@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food4U - {% block title %}{% endblock %}</title>
+  <!-- 1. Include Pico CSS from a CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+  
+  <!-- 2. Custom Styles to Use Your Color Palette -->
+  <style>
+    :root {
+      --color-foreground: #6A8D73; /* Primary (header) */
+      --color-background: #F4FDD9; /* Body background */
+      --color-accent1:    #E4FFE1; /* Optional accent */
+      --color-accent2:    #FFE8C2; /* Optional accent */
+      --color-accent3:    #F0A868; /* Footer background */
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--color-background);
+    }
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    main {
+      flex: 1;
+      margin-top: 1%;
+    }
+
+    header {
+      background-color: var(--color-foreground);
+      padding: 0.1rem 0;
+      font-size: 0.8rem;
+    }
+
+    header nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    header nav ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    footer {
+      background-color: var(--color-accent3);
+      padding: 0.6rem;
+      font-size: 0.7rem;
+      text-align: center;
+    }
+
+    footer p {
+      color: #fff;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <!-- 3. Header with a semantic nav -->
+    <header>
+      <nav class="container">
+        <ul>
+          <li><strong>Food4U</strong></li> <!-- Logo or brand name -->
+        </ul>
+        <ul>
+          <li><a href="aboutUs">About Us</a></li>
+          <li><a href="{% url 'search' %}">Search</a></li>
+          <li><a href="wishlist">Wishlist</a></li>
+          <li><a href="account">Account</a></li>
+          <li><a href="{% url 'member_login' %}">Login/Signup</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- 4. Main Content (Django block for child templates) -->
+    <main class="container">
+      {% block content %}{% endblock %}
+    </main>
+
+    <!-- 5. Footer -->
+    <footer>
+      <p>© 2025 Food4U</p>
+    </footer>
+
+  </div>
+</body>
+
+</html>
