@@ -9,7 +9,6 @@ urlpatterns = [
     path('profile/<int:supplier_id>', views.profile_view, name='profile'),
     path('search', views.search_view, name='search'),
     path('about', views.about_view, name='about'),
-    path('wishlist', views.wishlist_view, name='wishlist'),
     path('account', views.account_view, name='account'),
     path('search_results', views.search_results_request, name='search_results'),
     path('accounts/', include('registration.urls')),
