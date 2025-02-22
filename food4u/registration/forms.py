@@ -42,7 +42,7 @@ User = get_user_model()
 class UserRegistrationForm(forms.ModelForm):
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput)
-
+    
     class Meta:
         model = User
         fields = ('email', 'name')  # Only include fields that exist in your CustomUser model

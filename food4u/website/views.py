@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import never_cache
 from django.shortcuts import render
 from .db import SessionLocal, User, Supplier, Products, Review
@@ -18,6 +19,7 @@ def profile_view(request, supplier_id):
     try:
         query = select(Supplier).where(Supplier.id == supplier_id)
         results = session.scalar(query)
+        print(results.address)
         supplier_dict = {'name' : results.name, 
                         'address' : results.address, 
                         'email' : results.email, 
@@ -102,10 +104,11 @@ def search_results_request(request):
     finally:
         session.close()
 
-def account_view(request, user_id):
+@login_required
+def account_view(request):
     session = SessionLocal()
     try:
-        query = select(User).where(User.id == user_id)
+        query = select(User).where(User.email == request.user.email)
         results = session.scalar(query)
         user_dict = {'name' : results.name, 
                         'address' : results.address, 
