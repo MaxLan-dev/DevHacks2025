@@ -9,10 +9,10 @@ from sqlalchemy import select
 
 def home_view(request):
     return render(request, 'website/home.html')
-
+def wishlist_view(request):
+    return render(request, 'website/wishlist.html')
 def about_view(request):
-    return render(request, 'website/about.html')
-
+    return render(request, 'website/aboutUS.html')
 def profile_view(request, supplier_id):
     session = SessionLocal()
     try:
@@ -24,7 +24,8 @@ def profile_view(request, supplier_id):
                         'phone' : results.phone, 
                         'industry' : results.industry, 
                         'date_registered' : results.date_registered, 
-                        'description' : results.description}
+                        'description' : results.description,
+                        'reviews' : results.reviews}
         return render(request, 'website/profile.html', supplier_dict)
     except Exception as e:
         session.rollback()
@@ -93,11 +94,29 @@ def search_results_request(request):
                             'description' : supplier.description,
                             'average_rating' : rating_sum / rating_count}           
             suppliers.append(supplier_dict)
-        print(suppliers)
         return JsonResponse(suppliers, safe=False)
     except Exception as e:
         session.rollback()
         print(e)
+        return render(request, 'website/error.html', {'error': str(e)})
+    finally:
+        session.close()
+
+def account_view(request, user_id):
+    session = SessionLocal()
+    try:
+        query = select(User).where(User.id == user_id)
+        results = session.scalar(query)
+        user_dict = {'name' : results.name, 
+                        'address' : results.address, 
+                        'email' : results.email, 
+                        'phone' : results.phone, 
+                        'industry' : results.industry, 
+                        'date_registered' : results.date_registered, 
+                        'description' : results.description}
+        return render(request, 'website/account.html', user_dict)
+    except Exception as e:
+        session.rollback()
         return render(request, 'website/error.html', {'error': str(e)})
     finally:
         session.close()

@@ -36,6 +36,20 @@
       margin-top: 1%;
     }
 
+    .mainText{
+      top: 50%;
+	    bottom: 50%;
+	    background-color: #8FD980;
+	    width: 50%;
+	    height: 15%;
+	    left: 50%;
+	    transform: translate(-50%, -50%); 
+	    justify-content: center;
+	    align-items: center;
+	    font-size: 100%;
+	    border-radius: 10px;
+    }
+
     header {
       background-color: var(--color-foreground);
       padding: 0.1rem 0;
@@ -80,7 +94,7 @@
           <li><strong>Food4U</strong></li> <!-- Logo or brand name -->
         </ul>
         <ul>
-          <li><a href="aboutUs">About Us</a></li>
+          <li><a href="{% url 'about' %}">About Us</a></li>
           <li><a href="{% url 'search' %}">Search</a></li>
           <li><a href="wishlist">Wishlist</a></li>
           <li><a href="account">Account</a></li>
@@ -91,7 +105,10 @@
 
     <!-- 4. Main Content (Django block for child templates) -->
     <main class="container">
-      {% block content %}{% endblock %}
+
+      {% block content %}
+      {% endblock %}
+      
     </main>
 
     <!-- 5. Footer -->
