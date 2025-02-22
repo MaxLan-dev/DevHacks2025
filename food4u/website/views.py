@@ -4,7 +4,7 @@ from django.views.decorators.http import require_POST
 from django.contrib.auth import logout
 from django.views.decorators.cache import never_cache
 from django.shortcuts import render
-from db import SessionLocal, User, Supplier, Products, Review
+from .db import SessionLocal, User, Supplier, Products, Review
 from sqlalchemy import select
 
 def home_view(request):
@@ -47,7 +47,7 @@ def search_view(request):
                             'date_registered' : result.date_registered, 
                             'description' : result.description}
             suppliers.append(supplier_dict)
-        return render(request, 'website/profile.html', {'suppliers' : suppliers, 'is_authenticated' : request.user.is_authenticated})
+        return render(request, 'website/search.html', {'suppliers' : suppliers, 'is_authenticated' : request.user.is_authenticated})
     except Exception as e:
         session.rollback()
         return render(request, 'website/error.html', {'error': str(e)})
@@ -61,37 +61,36 @@ def search_results_request(request):
     #location = request.GET.get('location', '1000')
     rating_min = request.GET.get('rating_min', '1')
     rating_max = request.GET.get('rating_max', '5')
-    sort_by = request.GET.get('sort_by', 'name')
-    hide_no_rating = request.GET.get('no_rating', 'false')
-    if sort_by == 'name':
-        sort_by = Supplier.name
-    #elif sort_by == 'rating':
+    hide_no_rating = request.GET.get('hide_no_rating', 'false')
     session = SessionLocal()
     try:
         query = select(Supplier)
-        if industry != 'any':
-            query = query.where(Supplier.industry == industry)
-        results = session.scalars(query)
-        for supplier in results:
+        # if industry != 'any':
+        #     query = query.where(Supplier.industry == industry)
+        results_unrefined = session.scalars(query)
+        print(results_unrefined.all())
+        print(results_unrefined)
+        results = []
+        suppliers = []
+        for supplier in results_unrefined:
             rating_sum = 0
             if supplier.reviews.length == 0 and hide_no_rating == 'true':
+                print("skipped")
                 continue
             for review in supplier.reviews:
                 rating_sum += review.rating
             if rating_sum / supplier.reviews.length < rating_min or rating_sum / supplier.reviews.length > rating_max:
                 continue
-
-        suppliers = []
-        for result in results:
-            supplier_dict = {'name' : result.name, 
-                            'address' : result.address, 
-                            'email' : result.email, 
-                            'phone' : result.phone, 
-                            'industry' : result.industry, 
-                            'date_registered' : result.date_registered, 
-                            'description' : result.description}
+            supplier_dict = {'name' : supplier.name, 
+                            'address' : supplier.address, 
+                            'email' : supplier.email, 
+                            'phone' : supplier.phone, 
+                            'industry' : supplier.industry, 
+                            'date_registered' : supplier.date_registered, 
+                            'description' : supplier.description,
+                            'average_rating' : rating_sum / supplier.reviews.length}           
             suppliers.append(supplier_dict)
-            return JsonResponse({"message": "Hello, world!"})
+        return JsonResponse(suppliers, safe=False)
     except Exception as e:
         session.rollback()
         return render(request, 'website/error.html', {'error': str(e)})
