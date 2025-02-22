@@ -11,10 +11,12 @@ html, body{
 
 a {
 	text-decoration: none;
+	color: #FBF9F9;
 }
 
 .header{
 	display: flex;
+	
 }
 
 .navigationPanel{
@@ -29,6 +31,7 @@ a {
     justify-content: center;
     align-items: center;  
 	width: 20%;
+
 }
 
 .navbarButton:hover {
@@ -36,9 +39,49 @@ a {
 }
 
 main{
+	padding-top: 1%;
 	background-color: #E4FFE1;
+	padding-bottom: 2%;
 }
 
+.discription{
+	margin-top: 2%;
+	padding: max(20px, 3%);
+	background-color: #8FD980;
+	margin-left: 10%;
+	margin-right: 10%;
+	border-radius: 10px;
+	font-size: 20px;
+}
+
+
+
+.about{
+	margin-top: 4%;
+}
+
+.aboutInfo{
+	margin-left: 3%;
+	margin-top: 2%;
+}
+
+.contact{
+	margin-top: 4%;
+}
+
+.contactInfo{
+	margin-left: 3%;
+	margin-top: 2%;
+}
+
+.reviews{
+	margin-top: 4%;
+}
+
+.review{
+	margin-top: 2%;
+	margin-left: 3%;
+}
 
 
 footer{
