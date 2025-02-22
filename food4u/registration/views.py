@@ -37,7 +37,7 @@ class CustomLoginView(LoginView):
         if user.groups.filter(name='Retailers').exists():
             return reverse_lazy('retailer_registered_home')
         else:
-            return reverse_lazy('farmer_landing')
+            return reverse_lazy('home')
 
 class CustomEmailBackend(EmailBackend):
     def open(self):
@@ -70,7 +70,7 @@ class CustomEmailBackend(EmailBackend):
 class RegisterView(FormView):
     template_name = 'registration/register.html'
     form_class = UserRegistrationForm
-    success_url = reverse_lazy('farmer_landing') # Direct redirect
+    success_url = reverse_lazy('home') # Direct redirect
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
