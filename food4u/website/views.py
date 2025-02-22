@@ -18,6 +18,13 @@ def profile_view(request, supplier_id):
         query = select(Supplier).where(Supplier.id == supplier_id)
         results = session.scalar(query)
         print(results.address)
+        reviews = []
+        for review in results.reviews:
+            review_dict = {'content' : review.content,
+                            'date' : review.date,
+                            'rating' : review.rating,
+                            'author' : review.writer.name}
+            reviews.append(review_dict)
         supplier_dict = {'name' : results.name, 
                         'address' : results.address, 
                         'email' : results.email, 
@@ -25,7 +32,7 @@ def profile_view(request, supplier_id):
                         'industry' : results.industry, 
                         'date_registered' : results.date_registered, 
                         'description' : results.description,
-                        'reviews' : results.reviews}
+                        'reviews' : reviews}
         return render(request, 'website/profile.html', supplier_dict)
     except Exception as e:
         session.rollback()
