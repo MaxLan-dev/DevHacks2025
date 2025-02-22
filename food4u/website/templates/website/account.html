@@ -1,13 +1,26 @@
 {% extends 'website/base.html' %}
 
-{% block title %}Main Page{% endblock %}
+{% block title %}Account{% endblock %}
 
 {% block content %}
-    <main>
-
-        <div id="mainText" class="mainText">
-            <h1>Buy local, Support local</h1>
-        </div>
-        
-    </main>
+<div class="container mt-5">
+    <h2>Your Account</h2>
+    <p>Email: {{ email }}</p>
+    <p>Date Registered: {{ date_registered }}</p>
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="mb-3">
+                <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                    <div class="alert alert-danger">
+                        {{ field.errors }}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Update Account</button>
+    </form>
+</div>
 {% endblock %}

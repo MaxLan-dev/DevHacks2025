@@ -42,8 +42,13 @@
       flex: 1;
       margin-top: 1%;
     }
+<<<<<<< HEAD
 
     .mainText {
+=======
+    
+    .mainText{
+>>>>>>> d5919404b3310197c2bc3564c1cde13f356db329
       top: 50%;
       bottom: 50%;
       background-color: #8FD980;
@@ -89,6 +94,7 @@
       margin: 0;
     }
 
+<<<<<<< HEAD
     .greeting {
       position: relative;
       display: flex;
@@ -98,35 +104,57 @@
 
       left: 38%;
       /*transform: translate(-20%, -80%); */
+=======
+    /*
+    .mainPart{
+      background-color: #BBFFC5;
+      padding-top: 5px;
+      padding-bottom: 35px;
+      border-radius: 10px;
+    }
+
+    .greeting{
+      position: relative;
+      display: flex;
+      margin-top: 5%;
+>>>>>>> d5919404b3310197c2bc3564c1cde13f356db329
       justify-content: center;
       align-items: center;
       font-size: 20px;
       border-radius: 10px;
     }
 
+<<<<<<< HEAD
     .discription {
+=======
+    .mainDiscription{
+>>>>>>> d5919404b3310197c2bc3564c1cde13f356db329
       position: relative;
       display: flex;
       margin-top: 2%;
       width: 80%;
       left: 10%;
-      justify-content: center;
-      align-items: center;
+      
       font-size: 20px;
       border-radius: 10px;
+      
     }
 
     .callToAction {
       position: relative;
       display: flex;
       margin-top: 2%;
+<<<<<<< HEAD
 
+=======
+>>>>>>> d5919404b3310197c2bc3564c1cde13f356db329
       justify-content: center;
       align-items: center;
       font-size: 20px;
       border-radius: 10px;
     }
 
+<<<<<<< HEAD
     .review-item {
       margin: 1rem 0;
       padding: 1rem;
@@ -163,6 +191,80 @@
       font-weight: bold;
       color: #007BFF;
     }
+=======
+    .caption{
+      position: relative;
+      display: flex;
+      margin-top: 5%;
+      width: 40%;
+      left: 30%;
+      padding-top: 8px;
+      background-color: #BBFFC5;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      
+    }*/
+
+    .mainPart {
+    background-color: #BBFFC5;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Greeting Section */
+.greeting {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #2F4F4F;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #8FD980;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Description Section */
+.mainDiscription {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    text-align: left;
+    padding-left: 10px;
+}
+
+/* Call to Action Section */
+.callToAction {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2F4F4F;
+    background-color: #E4FFE1;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Caption Section */
+.caption {
+    background-color: #8FD980;
+    padding: 20px;
+    width: 60%;
+    margin: 40px auto;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+>>>>>>> d5919404b3310197c2bc3564c1cde13f356db329
   </style>
 </head>
 
@@ -173,12 +275,12 @@
     <header>
       <nav class="container">
         <ul>
-          <li><strong>Food4U</strong></li> <!-- Logo or brand name -->
+          <li><a href="{% url 'home' %}">Food4U</a></li> <!-- Logo or brand name -->
         </ul>
         <ul>
           <li><a href="{% url 'about' %}">About Us</a></li>
           <li><a href="{% url 'search' %}">Search</a></li>
-          <li><a href="account">Account</a></li>
+          <li><a href="{% url 'account' %}">Account</a></li>
           <li><a href="{% url 'member_login' %}">Login/Signup</a></li>
         </ul>
       </nav>
