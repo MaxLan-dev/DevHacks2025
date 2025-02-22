@@ -2,49 +2,49 @@
 {% load static %}
 
 {% block content %}
-<div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card border-success">
-        <div class="card-header bg-success text-center">
-          <h2 class="text-white">Login</h2>
-        </div>
-        <div class="card-body">
-          <form method="post">
-            {% csrf_token %}
-            {% for field in form %}
-              <div class="form-group">
-                {{ field.label_tag }}
-                {{ field }}
-                {% if field.errors %}
-                  <small class="text-danger">{{ field.errors|striptags }}</small>
-                {% endif %}
-              </div>
-            {% endfor %}
-            <button type="submit" class="btn btn-success btn-block">Login</button>
-          </form>
-          <div class="text-center mt-3">
-            <a href="{% url 'password_reset_request' %}" class="text-success">Forgot Password?</a>
-          </div>
-        </div>
-      </div>
+<main class="container" style="
+  background-color: var(--color-accent1);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  width: 50%;
+">
+  <form method="post" class="form-container">
+    <div class="card-header bg-success text-center">
+      <h2 class="text-white">Login</h2>
     </div>
-  </div>
-</div>
+
+    {% csrf_token %}
+    {% for field in form %}
+    <div class="form-group">
+      {{ field.label_tag }}
+      {{ field }}
+      {% if field.errors %}
+      <small class="text-danger">{{ field.errors|striptags }}</small>
+      {% endif %}
+    </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-success btn-block">Login</button>
+
+    <div>
+      <a href="{% url 'password_reset_request' %}" class="text-success">Forgot Password?</a>
+      <a href="{% url 'register' %}" class="text-success">Don't have an account yet?</a>
+    </div>
+  </form>
+</main>
 {% endblock %}
 
 {% block extra_css %}
 <style>
-  body { background-color: #f8f9fa; }
-  .card { box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-  .form-group { margin-bottom: 1.5rem; }
-  .form-group label { display: block; margin-bottom: 0.5rem; }
-  .form-group input {
-    width: 100%; padding: 0.5rem; font-size: 1rem;
-    border: 1px solid #ced4da; border-radius: 0.25rem;
-    box-sizing: border-box;
+  .btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
   }
-  .btn-success { background-color: #28a745; border-color: #28a745; }
-  .btn-success:hover { background-color: #218838; border-color: #1e7e34; }
+
+  .btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+  }
 </style>
 {% endblock %}

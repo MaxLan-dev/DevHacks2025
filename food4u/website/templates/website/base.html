@@ -9,13 +9,6 @@
   
   <!-- 2. Custom Styles to Use Your Color Palette -->
   <style>
-    /* Color Palette
-       6A8D73 (Reseda green)
-       F4FDD9 (Light yellow)
-       E4FFE1 (Nyanza)
-       FFE8C2 (Wheat)
-       F0A868 (Sandy brown)
-    */
     :root {
       --color-foreground: #6A8D73; /* Primary (header) */
       --color-background: #F4FDD9; /* Body background */
@@ -24,15 +17,29 @@
       --color-accent3:    #F0A868; /* Footer background */
     }
 
-    /* Apply background to the body */
-    body {
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
       background-color: var(--color-background);
     }
 
-    /* Header styling */
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    main {
+      flex: 1;
+      margin-top: 1%;
+    }
+
     header {
       background-color: var(--color-foreground);
-      padding: 1rem 0;
+      padding: 0.1rem 0;
+      font-size: 0.8rem;
     }
 
     header nav ul {
@@ -45,14 +52,14 @@
     }
 
     header nav ul li a {
-      color: #fff;            /* White text on Reseda green */
+      color: #fff;
       text-decoration: none;
     }
 
-    /* Footer styling */
     footer {
       background-color: var(--color-accent3);
-      padding: 1rem;
+      padding: 0.6rem;
+      font-size: 0.7rem;
       text-align: center;
     }
 
@@ -62,36 +69,37 @@
     }
   </style>
 </head>
+
 <body>
+  <div class="wrapper">
 
-  <!-- 3. Header with a semantic nav -->
-  <header>
-    <nav class="container">
-      <ul>
-        <li><strong>Food4U</strong></li> <!-- Logo or brand name -->
-      </ul>
-      <ul>
-        <li><a href="aboutUs.html">About Us</a></li>
-        <li><a href="search.html">Search</a></li>
-        <li><a href="wishlist.html">Wishlist</a></li>
-        <li><a href="account.html">Account</a></li>
-        <li><a href="loginPage.html">Login/Signup</a></li>
-      </ul>
-    </nav>
-  </header>
+    <!-- 3. Header with a semantic nav -->
+    <header>
+      <nav class="container">
+        <ul>
+          <li><strong>Food4U</strong></li> <!-- Logo or brand name -->
+        </ul>
+        <ul>
+          <li><a href="aboutUs">About Us</a></li>
+          <li><a href="{% url 'search' %}">Search</a></li>
+          <li><a href="wishlist">Wishlist</a></li>
+          <li><a href="account">Account</a></li>
+          <li><a href="{% url 'member_login' %}">Login/Signup</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <!-- 4. Main Content (Django block for child templates) -->
-  <main class="container">
-    ------
-    ------
-    ------
-    
-  </main>
+    <!-- 4. Main Content (Django block for child templates) -->
+    <main class="container">
+      {% block content %}{% endblock %}
+    </main>
 
-  <!-- 5. Footer -->
-  <footer>
-    <p>© 2025 Food4U</p>
-  </footer>
+    <!-- 5. Footer -->
+    <footer>
+      <p>© 2025 Food4U</p>
+    </footer>
 
+  </div>
 </body>
+
 </html>

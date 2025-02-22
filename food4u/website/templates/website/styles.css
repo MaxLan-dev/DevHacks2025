@@ -4,14 +4,9 @@
 	box-sizing: border-box;
 }
 
-html, body{
-	height: 100%;
-	margin: 0;
-	background-color: #F4FDD9;
-}
-
 a {
 	text-decoration: none;
+	color: #FBF9F9;
 }
 
 .header{
@@ -24,21 +19,19 @@ a {
 	display: flex;
 	flex-direction: row;
 	background-color: #6A8D63;
-	height: 30px;
+	height: 50px;
 }
 
 .navbarButton{
 	display: flex;
-    justify-content: center;  /* Center horizontally */
+    justify-content: center; 
     align-items: center;  
 	width: 20%;
 }
 
-
 .navbarButton:hover {
 	background-color: #92CB87;
 }
-
 
 .mainText{
 	position: absolute;
@@ -71,17 +64,4 @@ a {
 	font-size: 100%;
 	border-radius: 20px;
 	color: #FFFFFF;
-}
-
-.authForm{
-	position: absolute; 
-	top: 50%;
-	bottom: 50%;
-	width: 20%;
-	height: 15%;
-	left: 50%;
-	transform: translate(-50%, -50%); 
-	justify-content: center;
-	align-items: center;
-	font-size: 100%;
 }
