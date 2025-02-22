@@ -36,12 +36,15 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm, AuthenticationForm
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
-
 User = get_user_model()
 
 class UserRegistrationForm(forms.ModelForm):
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput)
+    address = forms.CharField(label='Address', widget=forms.Textarea)
+    industry = forms.ChoiceField(label = 'Industry', choices=(("restaurant", "Restaurant"), ("bakery", "Bakery"), ("cafe", "Cafe"), ("grocery", "Grocery")))
+
+
     
     class Meta:
         model = User
