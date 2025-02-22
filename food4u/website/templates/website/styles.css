@@ -35,6 +35,11 @@ a {
 }
 
 
+.navbarButton:hover {
+	background-color: #92CB87;
+}
+
+
 .mainText{
 	position: absolute;
 	display: flex; 
