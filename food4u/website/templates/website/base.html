@@ -1,23 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Food4U - {% block title %}{% endblock %}</title>
   <!-- 1. Include Pico CSS from a CDN -->
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
-  
+
   <!-- 2. Custom Styles to Use Your Color Palette -->
   <style>
     :root {
-      --color-foreground: #6A8D73; /* Primary (header) */
-      --color-background: #F4FDD9; /* Body background */
-      --color-accent1:    #E4FFE1; /* Optional accent */
-      --color-accent2:    #FFE8C2; /* Optional accent */
-      --color-accent3:    #F0A868; /* Footer background */
+      --color-foreground: #6A8D73;
+      /* Primary (header) */
+      --color-background: #F4FDD9;
+      /* Body background */
+      --color-accent1: #E4FFE1;
+      /* Optional accent */
+      --color-accent2: #FFE8C2;
+      /* Optional accent */
+      --color-accent3: #F0A868;
+      /* Footer background */
     }
 
-    html, body {
+    html,
+    body {
       height: 100%;
       margin: 0;
       display: flex;
@@ -36,18 +43,18 @@
       margin-top: 1%;
     }
 
-    .mainText{
+    .mainText {
       top: 50%;
-	    bottom: 50%;
-	    background-color: #8FD980;
-	    width: 50%;
-	    height: 15%;
-	    left: 50%;
-	    transform: translate(-50%, -50%); 
-	    justify-content: center;
-	    align-items: center;
-	    font-size: 100%;
-	    border-radius: 10px;
+      bottom: 50%;
+      background-color: #8FD980;
+      width: 50%;
+      height: 15%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      justify-content: center;
+      align-items: center;
+      font-size: 100%;
+      border-radius: 10px;
     }
 
     header {
@@ -82,13 +89,13 @@
       margin: 0;
     }
 
-    .greeting{
+    .greeting {
       position: relative;
       display: flex;
       margin-top: 5%;
       /*bottom: 80%;*/
       width: 20%;
-      
+
       left: 38%;
       /*transform: translate(-20%, -80%); */
       justify-content: center;
@@ -97,7 +104,7 @@
       border-radius: 10px;
     }
 
-    .discription{
+    .discription {
       position: relative;
       display: flex;
       margin-top: 2%;
@@ -109,15 +116,52 @@
       border-radius: 10px;
     }
 
-    .callToAction{
+    .callToAction {
       position: relative;
       display: flex;
       margin-top: 2%;
-      
+
       justify-content: center;
       align-items: center;
       font-size: 20px;
       border-radius: 10px;
+    }
+
+    .review-item {
+      margin: 1rem 0;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #f9f9f9;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .review-author {
+      font-size: 1.1rem;
+    }
+
+    .review-date {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .review-content {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    .review-rating {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #007BFF;
     }
   </style>
 </head>
@@ -145,7 +189,7 @@
 
       {% block content %}
       {% endblock %}
-      
+
     </main>
 
     <!-- 5. Footer -->
