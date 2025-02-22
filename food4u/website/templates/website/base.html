@@ -67,37 +67,39 @@
       color: #fff;
       margin: 0;
     }
-
   </style>
 </head>
 
-<body><div class="wrapper">
+<body>
+  <div class="wrapper">
 
-  <!-- 3. Header with a semantic nav -->
-  <header>
-    <nav class="container">
-      <ul>
-        <li><strong>Food4U</strong></li> <!-- Logo or brand name -->
-      </ul>
-      <ul>
-        <li><a href="aboutUs">About Us</a></li>
-        <li><a href="search">Search</a></li>
-        <li><a href="wishlist">Wishlist</a></li>
-        <li><a href="account">Account</a></li>
-        <li><a href="login">Login/Signup</a></li>
-      </ul>
-    </nav>
-  </header>
+    <!-- 3. Header with a semantic nav -->
+    <header>
+      <nav class="container">
+        <ul>
+          <li><strong>Food4U</strong></li> <!-- Logo or brand name -->
+        </ul>
+        <ul>
+          <li><a href="aboutUs">About Us</a></li>
+          <li><a href="search">Search</a></li>
+          <li><a href="wishlist">Wishlist</a></li>
+          <li><a href="account">Account</a></li>
+          <li><a href="login">Login/Signup</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <!-- 4. Main Content (Django block for child templates) -->
-  <main class="container">
-    {% block content %}{% endblock %}
-  </main>
+    <!-- 4. Main Content (Django block for child templates) -->
+    <main class="container">
+      {% block content %}{% endblock %}
+    </main>
 
-  <!-- 5. Footer -->
-  <footer>
-    <p>© 2025 Food4U</p>
-  </footer>
+    <!-- 5. Footer -->
+    <footer>
+      <p>© 2025 Food4U</p>
+    </footer>
 
-</div></body>
+  </div>
+</body>
+
 </html>
