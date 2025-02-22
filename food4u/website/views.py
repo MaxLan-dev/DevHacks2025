@@ -45,14 +45,18 @@ def profile_view(request, supplier_id):
                             'rating' : review.rating,
                             'author' : review.writer.name}
             reviews.append(review_dict)
-        supplier_dict = {'name' : results.name, 
-                        'address' : results.address, 
-                        'email' : results.email, 
-                        'phone' : results.phone, 
-                        'industry' : results.industry, 
-                        'date_registered' : results.date_registered, 
-                        'description' : results.description,
-                        'reviews' : reviews}
+        supplier_dict = {
+    'name': results.name,
+    'address': results.address,
+    'email': results.email,
+    'phone': results.phone,
+    'industry': results.industry,
+    'date_registered': results.date_registered,
+    'description': results.description,
+    'reviews': reviews,
+    'supplier_id': supplier_id  # Add this line
+}
+
         print(supplier_dict)
         return render(request, 'website/profile.html', supplier_dict)
     except Exception as e:
