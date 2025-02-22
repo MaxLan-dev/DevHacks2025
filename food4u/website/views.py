@@ -59,8 +59,8 @@ def search_results_request(request):
     # Industry, Location, Rating
     industry = request.GET.get('industry', 'any')
     #location = request.GET.get('location', '1000')
-    rating_min = request.GET.get('rating_min', '1')
-    rating_max = request.GET.get('rating_max', '5')
+    rating_min = int(request.GET.get('rating_min', '1'))
+    rating_max = int(request.GET.get('rating_max', '5'))
     hide_no_rating = request.GET.get('hide_no_rating', 'false')
     session = SessionLocal()
     try:
@@ -68,18 +68,21 @@ def search_results_request(request):
         # if industry != 'any':
         #     query = query.where(Supplier.industry == industry)
         results_unrefined = session.scalars(query)
-        print(results_unrefined.all())
-        print(results_unrefined)
         results = []
         suppliers = []
-        for supplier in results_unrefined:
+        for supplier in results_unrefined.all():
+            #print(supplier.name)
             rating_sum = 0
-            if supplier.reviews.length == 0 and hide_no_rating == 'true':
+            rating_count = len(supplier.reviews)
+            if rating_count == 0 and hide_no_rating == 'true':
                 print("skipped")
                 continue
             for review in supplier.reviews:
                 rating_sum += review.rating
-            if rating_sum / supplier.reviews.length < rating_min or rating_sum / supplier.reviews.length > rating_max:
+            if rating_count == 0:
+                rating_count = 1
+            elif rating_sum / rating_count < rating_min or rating_sum / rating_count > rating_max:
+                print("skipped")
                 continue
             supplier_dict = {'name' : supplier.name, 
                             'address' : supplier.address, 
@@ -88,11 +91,13 @@ def search_results_request(request):
                             'industry' : supplier.industry, 
                             'date_registered' : supplier.date_registered, 
                             'description' : supplier.description,
-                            'average_rating' : rating_sum / supplier.reviews.length}           
+                            'average_rating' : rating_sum / rating_count}           
             suppliers.append(supplier_dict)
+        print(suppliers)
         return JsonResponse(suppliers, safe=False)
     except Exception as e:
         session.rollback()
+        print(e)
         return render(request, 'website/error.html', {'error': str(e)})
     finally:
         session.close()
