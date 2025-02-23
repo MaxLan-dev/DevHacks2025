@@ -96,9 +96,9 @@
     </form>
   </aside>
 
-  <!-- CENTER COLUMN: Scrollable List of Products -->
+  <!-- CENTER COLUMN: Scrollable List of Profiles -->
   <section 
-    id="productListContainer"
+    id="profileListContainer"
     style="
       flex: 1; 
       background-color: var(--color-accent1, #E4FFE1); 
@@ -108,15 +108,15 @@
       max-height: calc(100vh - 4rem); /* or adjust as needed */
     "
   >
-    <h2>Available Products</h2>
-    <!-- This is where all products will be displayed -->
-    <div id="productList" style="display: flex; flex-direction: column; gap: 1rem;"></div>
+    <h2>Available Profiles</h2>
+    <!-- This is where all profiles will be displayed -->
+    <div id="profileList" style="display: flex; flex-direction: column; gap: 1rem;"></div>
   </section>
 </main>
 
 <style>
 /* Minimal styling to make items look like a marketplace list */
-.product-item {
+.profile-item {
   background-color: var(--color-accent2, #FFE8C2);
   padding: 1rem;
   border-radius: 0.5rem;
@@ -126,45 +126,45 @@
   align-items: center;
   transition: background-color 0.2s ease;
 }
-.product-item:hover {
+.profile-item:hover {
   background-color: var(--color-accent3, #F0A868);
   color: #fff;
 }
 
-.product-item img {
+.profile-item img {
   width: 80px;
   height: 80px;
   object-fit: cover;
   border-radius: 0.25rem;
 }
 
-.product-details {
+.profile-details {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
 }
 
-.product-details h4 {
+.profile-details h4 {
   margin: 0;
 }
 </style>
 
 <script>
-// On page load, fetch default products
+// On page load, fetch default profiles
 window.addEventListener('DOMContentLoaded', () => {
-  fetchProducts();
+  fetchProfiles();
 });
 
 // Handle form submission (AJAX)
 const searchForm = document.getElementById('searchForm');
 searchForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  fetchProducts();
+  fetchProfiles();
 });
 
 // Build the query string and fetch from server
-function fetchProducts() {
+function fetchProfiles() {
   const formData = new FormData(searchForm);
   const params = new URLSearchParams(formData);
 
@@ -175,38 +175,38 @@ function fetchProducts() {
   fetch(fetchUrl, { cache: 'no-store' })
     .then(response => response.json())
     .then(data => {
-      displayProducts(data);
+      displayProfiles(data);
     })
     .catch(err => {
-      console.error('Error fetching products:', err);
+      console.error('Error fetching profiles:', err);
     });
 }
 
-function displayProducts(products) {
-  const productList = document.getElementById('productList');
-  productList.innerHTML = ''; // Clear previous results
+function displayProfiles(profiles) {
+  const profileList = document.getElementById('profileList');
+  profileList.innerHTML = ''; // Clear previous results
 
-  if (!products || products.length === 0) {
-    productList.innerHTML = '<p>No products found.</p>';
+  if (!profiles || profiles.length === 0) {
+    profileList.innerHTML = '<p>No profiles found.</p>';
     return;
   }
 
-  products.forEach(item => {
-    const productItem = document.createElement('div');
-    productItem.classList.add('product-item');
+  profiles.forEach(item => {
+    const profileItem = document.createElement('div');
+    profileItem.classList.add('profile-item');
     
     // Example fallback image
-    productItem.innerHTML = `
-    <a href="/product/${item.id}">
-      <div class="product-details">
-        <h4>${item.name || 'Unnamed Product'}</h4>
+    profileItem.innerHTML = `
+    <a href="/profile/${item.id}">
+      <div class="profile-details">
+        <h4>${item.name || 'Unnamed Profile'}</h4>
         <p>${item.description || 'No description provided.'}</p>
         <p><strong>Price:</strong> $${item.price || 'N/A'}</p>
         <p><strong>Rating:</strong> ${item.rating || 'N/A'}</p>
       </div></a>
     `;
 
-    productList.appendChild(productItem);
+    profileList.appendChild(profileItem);
   });
 }
 </script>
