@@ -30,6 +30,8 @@ DEBUG = True
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'food4u-5ka6.onrender.com']
 AUTH_USER_MODEL = 'registration.CustomUser'
 
+# for deployment on Render to be able to update the database
+CSRF_TRUSTED_ORIGINS = ['https://food4u-5ka6.onrender.com']
 
 # Application definition
 
