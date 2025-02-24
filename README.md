@@ -4,7 +4,7 @@ This is a Food4U team's project for University of Manitoba's devClub 2025 hackat
 It implements a system which allows the small businesses to search for local food suppliers (in particular, farmers) and connect with them in order to source the food products directly and more efficiently for their business.  
 
 The system can be accessed here: https://food4u-5ka6.onrender.com
-
+Note: If the website does not load after clicking the link, wait for abour 40 seconds and try again. Since the website is hosted on a free host, the system is not active when no one uses it for a while, and is being re-deployed automatically whenever someone accesses it.
 
 ## Project Goals
 The Food4U project aims to bridge the gap between small businesses and local food suppliers by:
