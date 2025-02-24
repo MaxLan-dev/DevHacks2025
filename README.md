@@ -1,7 +1,8 @@
 # BRIEF DESCRIPTION: 
 
 This is a Food4U team's project for University of Manitoba's devClub 2025 hackathon.
-It implements a system which allows the small businesses to search for local food suppliers (in particular, farmers) and connect with them in order to source the food products directly and more efficiently for their business.
+It implements a system which allows the small businesses to search for local food suppliers (in particular, farmers) and connect with them in order to source the food products directly and more efficiently for their business.  
+
 The system can be accessed here: https://food4u-5ka6.onrender.com
 
 
